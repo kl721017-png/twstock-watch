@@ -1,1 +1,205 @@
-<!DOCTYPE html><html><body><h1>Updated TW Stock Watch</h1><p>警示股卡片與Tag系統已加入。</p></body></html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台股監控雷達</title>
+<style>
+body{
+    background:#111827;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
+}
+h1{
+    margin-bottom:20px;
+}
+.top-cards{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:20px;
+}
+.card{
+    background:#1f2937;
+    border-radius:12px;
+    padding:16px;
+    min-width:150px;
+    cursor:pointer;
+    border:1px solid #374151;
+}
+.card:hover{
+    border-color:#10b981;
+}
+.stock{
+    background:#1f2937;
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:12px;
+}
+.tag{
+    display:inline-block;
+    margin-right:6px;
+    margin-top:8px;
+    padding:4px 8px;
+    border-radius:999px;
+    font-size:12px;
+}
+.hot{background:#dc2626;}
+.breakout{background:#d97706;}
+.adx{background:#059669;}
+.warning{background:#7c3aed;}
+</style>
+</head>
+<body>
+
+<h1>台股監控雷達</h1>
+
+<div class="top-cards">
+    <div class="card" onclick="filterStocks('bull')">
+        <h3>多頭排列</h3>
+        <div id="bullCount"></div>
+    </div>
+
+    <div class="card" onclick="filterStocks('volume')">
+        <h3>爆量</h3>
+        <div id="volumeCount"></div>
+    </div>
+
+    <div class="card" onclick="filterStocks('breakout')">
+        <h3>突破20日高</h3>
+        <div id="breakoutCount"></div>
+    </div>
+
+    <div class="card" onclick="filterStocks('warning')">
+        <h3>警示股</h3>
+        <div id="warningCount"></div>
+    </div>
+</div>
+
+<h2 id="title">全部股票</h2>
+
+<div id="stockList"></div>
+
+<script>
+
+const stocks = [
+    {
+        sym:"2330",
+        name:"台積電",
+        tags:["爆量","突破20日高","ADX強"],
+        warning:"注意股"
+    },
+    {
+        sym:"3017",
+        name:"奇鋐",
+        tags:["爆量"],
+        warning:"20分盤"
+    },
+    {
+        sym:"3661",
+        name:"世芯",
+        tags:["多頭排列"],
+        warning:"5分盤"
+    },
+    {
+        sym:"2454",
+        name:"聯發科",
+        tags:["多頭排列","ADX強"],
+        warning:null
+    }
+];
+
+function warningRank(v){
+    if(v==="注意股") return 1;
+    if(v==="5分盤") return 2;
+    if(v==="20分盤") return 3;
+    return 999;
+}
+
+function render(list){
+
+    document.getElementById("bullCount").innerText =
+        stocks.filter(s=>s.tags.includes("多頭排列")).length;
+
+    document.getElementById("volumeCount").innerText =
+        stocks.filter(s=>s.tags.includes("爆量")).length;
+
+    document.getElementById("breakoutCount").innerText =
+        stocks.filter(s=>s.tags.includes("突破20日高")).length;
+
+    document.getElementById("warningCount").innerText =
+        stocks.filter(s=>s.warning).length;
+
+    const html = list.map(stock=>{
+
+        const tags = stock.tags.map(tag=>{
+
+            let cls = "";
+
+            if(tag==="爆量") cls="hot";
+            if(tag==="突破20日高") cls="breakout";
+            if(tag==="ADX強") cls="adx";
+
+            return `<span class="tag ${cls}">${tag}</span>`;
+
+        }).join("");
+
+        const warning = stock.warning
+            ? `<span class="tag warning">${stock.warning}</span>`
+            : "";
+
+        return `
+        <div class="stock">
+            <h3>${stock.sym} ${stock.name}</h3>
+
+            ${warning}
+
+            <div>
+                ${tags}
+            </div>
+        </div>
+        `;
+
+    }).join("");
+
+    document.getElementById("stockList").innerHTML = html;
+}
+
+function filterStocks(type){
+
+    let filtered = [...stocks];
+
+    if(type==="bull"){
+        filtered = filtered.filter(s=>s.tags.includes("多頭排列"));
+        document.getElementById("title").innerText = "多頭排列";
+    }
+
+    if(type==="volume"){
+        filtered = filtered.filter(s=>s.tags.includes("爆量"));
+        document.getElementById("title").innerText = "爆量";
+    }
+
+    if(type==="breakout"){
+        filtered = filtered.filter(s=>s.tags.includes("突破20日高"));
+        document.getElementById("title").innerText = "突破20日高";
+    }
+
+    if(type==="warning"){
+        filtered = filtered
+            .filter(s=>s.warning)
+            .sort((a,b)=>warningRank(a.warning)-warningRank(b.warning));
+
+        document.getElementById("title").innerText = "警示股";
+    }
+
+    render(filtered);
+}
+
+render(stocks);
+
+</script>
+
+</body>
+</html>
