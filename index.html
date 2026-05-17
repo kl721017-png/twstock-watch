@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TWStockWatch 台股指標監控</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4f6fb;color:#172033;font-family:Arial,'Noto Sans TC',sans-serif}.wrap{max-width:1180px;margin:0 auto;padding:18px}header{background:#fff;border-bottom:1px solid #dfe6f2;position:sticky;top:0;z-index:10}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.brand{font-size:24px;font-weight:800;color:#1f4fd6}.sub{font-size:13px;color:#718096;margin-top:4px}.btn{border:0;border-radius:10px;padding:9px 14px;cursor:pointer;background:#1f4fd6;color:#fff;font-weight:700}.btn.secondary{background:#edf2f7;color:#27364f}.btn.danger{background:#fee2e2;color:#991b1b}.btn:disabled{opacity:.6;cursor:not-allowed}.tabs{display:flex;gap:8px;margin-top:14px}.tab{border:0;background:#edf2f7;color:#42526e;border-radius:10px;padding:9px 16px;font-weight:700;cursor:pointer}.tab.active{background:#1f4fd6;color:#fff}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{background:#fff;border:1px solid #dfe6f2;border-radius:16px;box-shadow:0 2px 8px rgba(20,30,50,.04)}.panel{padding:16px}.title{font-size:15px;font-weight:800;margin-bottom:12px}.muted{color:#718096;font-size:13px}.inputrow{display:flex;gap:8px;flex-wrap:wrap}.inputrow input,.inputrow select{flex:1;min-width:150px;border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;font-size:15px;background:#fff}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px 10px;border-bottom:1px solid #edf2f7;text-align:right;font-size:14px;vertical-align:middle}.table th:first-child,.table td:first-child{text-align:left}.table th{font-size:12px;color:#718096;background:#fafbfe;position:sticky;top:85px;z-index:2}.stock-name{font-weight:800}.stock-id{font-size:12px;color:#718096}.pos{color:#dc2626;font-weight:800}.neg{color:#059669;font-weight:800}.hot{color:#dc2626;font-weight:900}.good{color:#1f4fd6;font-weight:900}.tag{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800;background:#edf2f7;color:#42526e}.tag.hot{background:#fee2e2;color:#b91c1c}.tag.good{background:#dbeafe;color:#1d4ed8}.tag.green{background:#dcfce7;color:#047857}.strong-row{background:#fff7ed}.strong-row td:first-child{border-left:4px solid #f97316}.list{display:flex;gap:8px;flex-wrap:wrap}.chip{display:flex;gap:8px;align-items:center;background:#edf2f7;border-radius:999px;padding:7px 10px;font-weight:700}.chip button{border:0;background:transparent;color:#991b1b;font-weight:900;cursor:pointer}.log{padding:12px;border-bottom:1px solid #edf2f7}.log:last-child{border-bottom:0}.hidden{display:none}.stat{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.stat .box{padding:14px;border-radius:14px;background:#fff;border:1px solid #dfe6f2}.stat .num{font-size:22px;font-weight:900}.stat .label{font-size:12px;color:#718096;margin-top:4px}@media(max-width:900px){.table{min-width:980px}.scroll{overflow:auto}.stat{grid-template-columns:repeat(2,1fr)}}
+*{box-sizing:border-box}body{margin:0;background:#f4f6fb;color:#172033;font-family:Arial,'Noto Sans TC',sans-serif}.wrap{max-width:1180px;margin:0 auto;padding:18px}header{background:#fff;border-bottom:1px solid #dfe6f2;position:sticky;top:0;z-index:10}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.brand{font-size:24px;font-weight:800;color:#1f4fd6}.sub{font-size:13px;color:#718096;margin-top:4px}.btn{border:0;border-radius:10px;padding:9px 14px;cursor:pointer;background:#1f4fd6;color:#fff;font-weight:700}.btn.secondary{background:#edf2f7;color:#27364f}.btn.danger{background:#fee2e2;color:#991b1b}.btn:disabled{opacity:.6;cursor:not-allowed}.tabs{display:flex;gap:8px;margin-top:14px}.tab{border:0;background:#edf2f7;color:#42526e;border-radius:10px;padding:9px 16px;font-weight:700;cursor:pointer}.tab.active{background:#1f4fd6;color:#fff}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{background:#fff;border:1px solid #dfe6f2;border-radius:16px;box-shadow:0 2px 8px rgba(20,30,50,.04)}.panel{padding:16px}.title{font-size:15px;font-weight:800;margin-bottom:12px}.muted{color:#718096;font-size:13px}.inputrow{display:flex;gap:8px;flex-wrap:wrap}.inputrow input,.inputrow select{flex:1;min-width:150px;border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;font-size:15px;background:#fff}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px 10px;border-bottom:1px solid #edf2f7;text-align:right;font-size:14px;vertical-align:middle}.table th:first-child,.table td:first-child{text-align:left}.table th{font-size:12px;color:#718096;background:#fafbfe;position:sticky;top:85px;z-index:2}.stock-name{font-weight:800}.stock-id{font-size:12px;color:#718096}.pos{color:#dc2626;font-weight:800}.neg{color:#059669;font-weight:800}.hot{color:#dc2626;font-weight:900}.good{color:#1f4fd6;font-weight:900}.tag{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800;background:#edf2f7;color:#42526e}.tag.hot{background:#fee2e2;color:#b91c1c}.tag.good{background:#dbeafe;color:#1d4ed8}.tag.green{background:#dcfce7;color:#047857}.strong-row{background:#fff7ed}.strong-row td:first-child{border-left:4px solid #f97316}.list{display:flex;gap:8px;flex-wrap:wrap}.chip{display:flex;gap:8px;align-items:center;background:#edf2f7;border-radius:999px;padding:7px 10px;font-weight:700}.chip button{border:0;background:transparent;color:#991b1b;font-weight:900;cursor:pointer}.log{padding:12px;border-bottom:1px solid #edf2f7}.log:last-child{border-bottom:0}.hidden{display:none}.stat{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.stat .box{padding:14px;border-radius:14px;background:#fff;border:1px solid #dfe6f2;cursor:pointer;transition:.15s}.stat .box:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(20,30,50,.08)}.stat .box.active{border-color:#1f4fd6;background:#eef4ff}.stat .num{font-size:22px;font-weight:900}.stat .label{font-size:12px;color:#718096;margin-top:4px}@media(max-width:900px){.table{min-width:980px}.scroll{overflow:auto}.stat{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <div class="top">
       <div>
         <div class="brand">TWStockWatch 台股指標監控</div>
-        <div class="sub">只監控自選股｜FinMind｜無 LINE 通知｜Phase 2：爆量 / 均線 / 突破</div>
+        <div class="sub">只監控自選股｜FinMind｜無 LINE 通知｜Phase 3：條件卡片篩選 / 爆量 / 均線 / 突破</div>
       </div>
       <div class="inputrow" style="align-items:center">
         <span id="status" class="tag">啟動中</span>
@@ -33,11 +33,12 @@
 <main class="wrap">
   <section id="page-monitor">
     <div class="stat">
-      <div class="box"><div id="stat-count" class="num">0</div><div class="label">追蹤股票</div></div>
-      <div class="box"><div id="stat-hot" class="num">0</div><div class="label">爆量 ≥ 2倍</div></div>
-      <div class="box"><div id="stat-break" class="num">0</div><div class="label">突破20日高</div></div>
-      <div class="box"><div id="stat-uptrend" class="num">0</div><div class="label">5MA &gt; 20MA</div></div>
+      <div id="box-all" class="box" onclick="setFilter('all')"><div id="stat-count" class="num">0</div><div class="label">追蹤股票</div></div>
+      <div id="box-hot" class="box" onclick="setFilter('hot')"><div id="stat-hot" class="num">0</div><div class="label">爆量 ≥ 2倍</div></div>
+      <div id="box-break" class="box" onclick="setFilter('break')"><div id="stat-break" class="num">0</div><div class="label">突破20日高</div></div>
+      <div id="box-uptrend" class="box" onclick="setFilter('uptrend')"><div id="stat-uptrend" class="num">0</div><div class="label">5MA &gt; 20MA</div></div>
     </div>
+    <div id="filterPanel" class="card panel" style="margin-bottom:14px"></div>
     <div class="card scroll">
       <table class="table">
         <thead>
@@ -103,6 +104,7 @@ let watchlist = load(LS_WATCH, DEFAULT_WATCH);
 let alerts = load(LS_ALERTS, []);
 let logs = load(LS_LOG, []);
 let market = [];
+let activeFilter = "all";
 let firedToday = new Set();
 
 function load(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
@@ -134,8 +136,23 @@ function clearLog(){logs=[];save(LS_LOG,logs);renderAll()}
 function checkAlerts(){let day=todayKey();for(const s of market){if(!s||s.error)continue;let autoKeys=[['vol',s.volRatio>=2,`${s.id} ${s.name} 爆量：量比 ${fmt(s.volRatio,2)}x`],['break',s.breakout20,`${s.id} ${s.name} 突破20日高`]];for(const [k,ok,msg] of autoKeys){let key=`${day}:${s.id}:${k}`;if(ok&&!firedToday.has(key)){firedToday.add(key);addLog(msg,'hot')}}for(const a of alerts.filter(x=>x.id===s.id)){let ok=false,txt='';if(a.type==='price_above'){ok=s.close>a.value;txt=`${s.id} ${s.name} 價格高於 ${a.value}`}if(a.type==='price_below'){ok=s.close<a.value;txt=`${s.id} ${s.name} 價格低於 ${a.value}`}if(a.type==='rsi_above'){ok=s.rsi>a.value;txt=`${s.id} ${s.name} RSI 高於 ${a.value}`}if(a.type==='rsi_below'){ok=s.rsi<a.value;txt=`${s.id} ${s.name} RSI 低於 ${a.value}`}if(a.type==='adx_above'){ok=s.adx>a.value;txt=`${s.id} ${s.name} ADX 高於 ${a.value}`}if(a.type==='adx_below'){ok=s.adx<a.value;txt=`${s.id} ${s.name} ADX 低於 ${a.value}`}if(a.type==='vol_above'){ok=s.volRatio>a.value;txt=`${s.id} ${s.name} 量比高於 ${a.value}`}if(a.type==='breakout20'){ok=s.breakout20;txt=`${s.id} ${s.name} 突破20日高`}let key=`${day}:alert:${a.key}`;if(ok&&!firedToday.has(key)){firedToday.add(key);addLog(txt,'hot')}}}}
 
 function renderAll(){renderRows();renderWatch();renderAlerts();renderLogs()}
-function renderRows(){document.getElementById('stat-count').textContent=watchlist.length;document.getElementById('stat-hot').textContent=market.filter(x=>x.volRatio>=2).length;document.getElementById('stat-break').textContent=market.filter(x=>x.breakout20).length;document.getElementById('stat-uptrend').textContent=market.filter(x=>x.uptrend).length;const body=document.getElementById('rows');if(!watchlist.length){body.innerHTML='<tr><td colspan="12" style="text-align:center;padding:40px;color:#718096">尚未加入追蹤股票</td></tr>';return}body.innerHTML=market.map(s=>s.error?`<tr><td><div class="stock-name">${s.id} ${s.name}</div></td><td colspan="10" style="text-align:left;color:#991b1b">資料讀取失敗</td><td><button class="btn danger" onclick="removeStock('${s.id}')">刪除</button></td></tr>`:`<tr class="${s.volRatio>=2||s.breakout20?'strong-row':''}">
-<td><div class="stock-name">${s.id} ${s.name}</div><div class="stock-id">${s.plusDI>s.minusDI?'多方較強':'空方/整理'}</div></td>
+function setFilter(filter){activeFilter=filter;renderRows()}
+function filterLabel(filter){return {all:'全部追蹤股票',hot:'爆量 ≥ 2倍',break:'突破20日高',uptrend:'5MA > 20MA'}[filter]||'全部追蹤股票'}
+function applyFilter(list){
+  if(activeFilter==='hot')return list.filter(x=>x.volRatio>=2);
+  if(activeFilter==='break')return list.filter(x=>x.breakout20);
+  if(activeFilter==='uptrend')return list.filter(x=>x.uptrend);
+  return list;
+}
+function renderFilterPanel(filtered){
+  ['all','hot','break','uptrend'].forEach(f=>{const el=document.getElementById('box-'+f);if(el)el.classList.toggle('active',activeFilter===f)});
+  const box=document.getElementById('filterPanel');
+  const chips=filtered.filter(x=>!x.error).map(s=>`<span class="chip">${s.id} ${s.name}</span>`).join('') || '<span class="muted">目前沒有股票符合這個條件</span>';
+  box.innerHTML=`<div class="top"><div><div class="title" style="margin-bottom:4px">${filterLabel(activeFilter)}：${filtered.filter(x=>!x.error).length} 檔</div><div class="muted">點上方摘要卡可切換篩選；下方表格會同步只顯示符合條件的股票。</div></div>${activeFilter==='all'?'':`<button class="btn secondary" onclick="setFilter('all')">清除篩選</button>`}</div><div class="list" style="margin-top:12px">${chips}</div>`;
+}
+function renderRows(){document.getElementById('stat-count').textContent=watchlist.length;document.getElementById('stat-hot').textContent=market.filter(x=>x.volRatio>=2).length;document.getElementById('stat-break').textContent=market.filter(x=>x.breakout20).length;document.getElementById('stat-uptrend').textContent=market.filter(x=>x.uptrend).length;const filtered=applyFilter(market);renderFilterPanel(filtered);const body=document.getElementById('rows');if(!watchlist.length){body.innerHTML='<tr><td colspan="12" style="text-align:center;padding:40px;color:#718096">尚未加入追蹤股票</td></tr>';return}if(!filtered.length){body.innerHTML=`<tr><td colspan="12" style="text-align:center;padding:40px;color:#718096">目前沒有股票符合「${filterLabel(activeFilter)}」</td></tr>`;return}
+body.innerHTML=filtered.map(s=>s.error?`<tr><td><div class="stock-name">${s.id} ${s.name}</div></td><td colspan="10" style="text-align:left;color:#991b1b">資料讀取失敗</td><td><button class="btn danger" onclick="removeStock('${s.id}')">刪除</button></td></tr>`:`<tr class="${s.volRatio>=2||s.breakout20?'strong-row':''}">
+<td><div class="stock-name">${s.id} ${s.name}</div><div class="stock-id">${s.plusDI>s.minusDI?'多方較強':'空方/整理'}</div><div style="margin-top:6px">${s.uptrend?'<span class="tag good">5MA&gt;20MA</span> ':''}${s.volRatio>=2?'<span class="tag hot">爆量</span> ':''}${s.breakout20?'<span class="tag green">突破</span> ':''}</div></td>
 <td>${fmt(s.close,2)}</td><td class="${s.changePct>=0?'pos':'neg'}">${s.changePct==null?'—':(s.changePct>=0?'+':'')+fmt(s.changePct,2)+'%'}</td>
 <td class="${s.rsi>=70?'hot':s.rsi<=30?'neg':''}">${fmt(s.rsi,2)}</td><td class="${s.adx>=25?'good':''}">${fmt(s.adx,2)}</td>
 <td>${fmt(s.ma5,2)}</td><td>${fmt(s.ma20,2)}</td><td class="${s.volRatio>=2?'hot':''}">${s.volRatio?fmt(s.volRatio,2)+'x':'—'}</td>
